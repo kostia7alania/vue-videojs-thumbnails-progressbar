@@ -1,5 +1,5 @@
 # videojs-thumbnails-progressbar
-
+<img src="preview.jpg">
 ## Project setup
 ```
 npm install
