@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <p>
+  <div class="app">
+    <div class="desc">
       The thumbnails plugin displays a series of images over the player
       progress bar when the viewer hovers over it or drags the playhead
       around to seek. Give it a shot:
-    </p>
+    </div>
     <video-player
       class="video-player-box"
       ref="videoPlayer"
@@ -32,7 +32,7 @@ export default {
           }
         ],
         poster: "./img/example-thumbnail.png",
-        width: 600
+        width: 400
       },
       thumbnails: {
         0: {
@@ -79,9 +79,39 @@ export default {
 };
 </script>
 <style>
-p {
-  background-color: #eee;
-  border: thin solid #777;
-  padding: 10px;
+.desc {
+  padding:10px;
+  margin:10px;  
 } 
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.desc {
+  background: linear-gradient(crimson, gold, yellowgreen, teal, crimson);
+  background-position: 0 0;
+  border-radius: 30px;
+  border: 10px solid white;
+  animation: background 2s infinite alternate;
+}
+
+@keyframes background {
+  100% {
+    background-position: 0 200px;
+  }
+}
+
+/* Helpers */
+BODY {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #EEE;
+  font-size: 16px;
+}
 </style>
