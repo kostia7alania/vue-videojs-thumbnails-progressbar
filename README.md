@@ -1,5 +1,12 @@
 # videojs-thumbnails-progressbar
+
+# DEMO: 
+https://skinny-opinion.surge.sh/
+
+<a href="https://skinny-opinion.surge.sh/">
 <img src="preview.jpg">
+</a>
+
 ## Project setup
 ```
 npm install
