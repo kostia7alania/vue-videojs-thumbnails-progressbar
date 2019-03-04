@@ -112,14 +112,16 @@ export default function (options) {
     // find the page offset of the mouse
     let left = pageX || (event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft);
     // subtract the page offset of the positioned offset parent
-    left -= offsetParent(progressControl.el()).getBoundingClientRect().left + pageXOffset - 100; // KOSTIA: костыли
+    left -= offsetParent(progressControl.el()).getBoundingClientRect().left + pageXOffset;
+    //left -= offsetParent(progressControl.el()).getBoundingClientRect().left + pageXOffset - 100; // KOSTIA: костыли
 
     // apply updated styles to the thumbnail if necessary
     // mouseTime is the position of the mouse along the progress control bar
     // `left` applies to the mouse position relative to the player so we need
     // to remove the progress control's left offset to know the mouse position
     // relative to the progress control
-    let mouseTime = Math.floor((left - progressControl.el().offsetLeft) / progressControl.width() * duration);
+    //let mouseTime = Math.floor((left - progressControl.el().offsetLeft) / progressControl.width() * duration);//with bug 
+    let mouseTime = Math.floor((left) / progressControl.width() * duration);//KOSTIA new FIX from git_issues => https://github.com/brightcove/videojs-thumbnails/issues/43
     for (let time in settings) {
       if (mouseTime > time) active = Math.max(active, time);
     }
@@ -135,7 +137,8 @@ export default function (options) {
     if ((left + halfWidth) > right) left -= (left + halfWidth) - right;
     else if (left < halfWidth) left = halfWidth;
 
-    div.style.left = left - 100  + 'px'; // KOSTIA: костыли
+    div.style.left = left - 100  + 'px';
+//    div.style.left = left - 100  + 'px'; // KOSTIA: костыли
   };
 
   // update the thumbnail while hovering
